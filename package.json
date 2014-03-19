@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Babelbite/tweetopinion",
   "dependencies": {
-    "neasy": "git://github.com/joserobleda/neasy.js"
+    "neasy": "git://github.com/joserobleda/neasy.js",
+    "twit": "~1.1.12"
   }
 }
