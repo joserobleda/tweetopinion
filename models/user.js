@@ -19,27 +19,34 @@
 
 		show: function () {
 			console.log(this.get('screen_name'));
+		},
+
+		sync: function () {
+			var self, deferred, screen_name;
+
+			self 		= this;
+			deferred 	= Q.defer();
+			screen_name = this.get('screen_name');
+
+			T.get('users/show', { screen_name: screen_name }, function (err, res) {
+				if (err) {
+					return deferred.reject(new Error(err));
+				}
+
+				self.set(res);
+				self.save().done(function () {
+					deferred.resolve(self);
+				});
+			});
+
+			return deferred.promise;
 		}
 	});
 
 	User.store = function (screen_name) {
-		var self, deferred;
+		var user = new User({ screen_name: screen_name });
 
-		self 		= this;
-		deferred 	= Q.defer();
-
-		T.get('users/show', { screen_name: screen_name }, function (err, res) {
-			if (err) {
-				return deferred.reject(new Error(err));
-			}
-
-			var user = new self(res);
-			user.save().done(function () {
-				deferred.resolve(user);
-			});
-		});
-
-		return deferred.promise;
+		return user.sync();
 	}
 
 	User.class = 'users';
