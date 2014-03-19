@@ -16,9 +16,10 @@
 	var User = Model.extend({
 		collection: 'users',
 
-		show: function (username) {
-			T.get('users/show', { screen_name: 'joserobleda' }, function (err, res) {
-				console.log(err, res);
+		show: function () {
+			console.log(this.get('user'));
+			T.get('users/show', { screen_name: this.get('user') }, function (err, res) {
+				console.log(res);
 			});
 		}
 	});
