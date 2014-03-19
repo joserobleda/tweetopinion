@@ -1,3 +1,28 @@
 html, body {
-	
+	margin: 0;	
+}
+
+.row:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+div.col {
+	float: left;
+	height: 100%
+}
+
+.layout {
+	width: 700px;
+	margin: 0 auto;
+}
+
+
+
+header {
+	background-image: url(../img/cream_dust.png);
+	background-color: #ccc;
+	height: 60px;
+	border-bottom: 1px solid #ccc;
 }
