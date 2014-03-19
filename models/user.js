@@ -19,7 +19,8 @@
 		show: function () {
 			console.log(this.get('user'));
 			T.get('users/show', { screen_name: this.get('user') }, function (err, res) {
-				console.log(res);
+				var profile_photo 	= res.profile_image_url;
+				var bg_photo 		= res.profile_background_image_url;
 			});
 		}
 	});
