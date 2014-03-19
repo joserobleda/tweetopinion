@@ -3,4 +3,4 @@
 	var controller 	= require('../controllers/user.js');
 	
 	app.get('/', controller.index);
-	app.get('/:user', controller.show);
+	app.get('/:screen_name', controller.show);

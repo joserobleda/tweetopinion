@@ -1,5 +1,6 @@
 
 	var app		= require('neasy');
+	var Q 		= app.require('q');
 	var Model 	= require('neasy/model');
 
 
@@ -17,12 +18,30 @@
 		collection: 'users',
 
 		show: function () {
-			console.log(this.get('user'));
-			T.get('users/show', { screen_name: this.get('user') }, function (err, res) {
-				console.log(res);
-			});
+			console.log(this.get('screen_name'));
+			
 		}
 	});
+
+	User.store = function (screen_name) {
+		var self, deferred;
+
+		self 		= this;
+		deferred 	= Q.defer();
+
+		T.get('users/show', { screen_name: screen_name }, function (err, res) {
+			if (err) {
+				return deferred.reject(new Error(err));
+			}
+
+			var user = new self(res);
+			user.save().done(function () {
+				deferred.resolve(user);
+			});
+		});
+
+		return deferred.promise;
+	}
 
 	User.class = 'users';
 
