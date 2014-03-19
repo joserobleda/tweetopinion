@@ -19,7 +19,6 @@
 
 		show: function () {
 			console.log(this.get('screen_name'));
-			
 		}
 	});
 
