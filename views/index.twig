@@ -8,20 +8,29 @@
 
         <title>TweetOpinion!</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" href="/assets/dev/css/reset.css" />
+        <link rel="stylesheet" href="/assets/dev/css/ncss.css" />
         <link rel="stylesheet" href="/assets/dev/css/app.css" />
         <meta name="description" content="To brave people. Give your honest opinion about a twitter user from the safety of being anonymous" />
     </head>
     <body>
-        <header>
-            <div class="layout">
-                <img src="{{ user.profile_image_url }}" />
-                {{ user.screen_name }}
-            </div>
-        </header>
+        <header></header>
 
-        <main>
-            <div class="layout">
+        <main style="background-image: url({{ user.profile_background_image_url_https }}); background-color: #{{ user.profile_background_color }}">
+            <div class="row layout small">
+                <div id="dashboard" class="col">
+                    <div class="image">
+                        <img src="{{ user.profile_image_url }}" />
+                    </div>
+
+                    <h2>{{ user.name }}</2>
+                    <h2>{{ user.screen_name }}</2>
                 
+                </div>
+
+                <div id="form" class="col">
+                    <textarea name="message" placeholder="Write here your anonimous message"></textarea>
+                </div>
             </div>
         </main>
 

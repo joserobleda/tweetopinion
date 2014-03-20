@@ -20,7 +20,6 @@
 
 				return User.store(data.screen_name);
 			}).then(function (user) {
-				
 				res.render('index.twig', {
 					user: user.toJSON()
 				});
