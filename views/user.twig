@@ -33,6 +33,7 @@
                     <form method="post" action="/{{ user.screen_name }}/message">
                         <textarea name="message" placeholder="Write here your anonymous message" required></textarea>
                         <button type="submit">Enviar</button>
+                        <span class="disclaimer">Don't worry, we don't store anything about you!</span>
                     </form>
 
                     {% if user.messages|length %}
