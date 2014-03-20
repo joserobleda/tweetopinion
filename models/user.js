@@ -2,6 +2,7 @@
 	var app		= require('neasy');
 	var Q 		= app.require('q');
 	var Model 	= require('neasy/model');
+	var Message = require('./message.js');
 
 
 	var Twit = require('twit');
@@ -39,6 +40,30 @@
 				});
 			});
 
+			return deferred.promise;
+		},
+
+		// @override
+		toJSON: function (options) {
+			var json 		= Model.prototype.toJSON.call(this, options);
+			json.messages 	= this.get('messages').toJSON();
+				
+			return json;
+		},
+
+		syncMessages: function () {
+			var self, deferred, screen_name, sort;
+
+			self 		= this;
+			deferred 	= Q.defer();
+			screen_name = this.get('screen_name');
+			sort 		= [['date', 'desc']];
+
+			Message.find({screen_name: screen_name}, {sort: sort}).then(function (messages) {
+				self.set('messages', messages);
+				deferred.resolve(self);
+			});
+			
 			return deferred.promise;
 		}
 	});

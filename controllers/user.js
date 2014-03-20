@@ -5,6 +5,11 @@
 	module.exports = {
 
 		index: function (req, res, next) {
+
+			if (req.query.screen_name) {
+				return res.redirect('/' + req.query.screen_name);
+			}
+
 			res.render('index.twig');
 		},
 
@@ -18,10 +23,16 @@
 					return user;
 				}
 
+				// store a new user
 				return User.store(data.screen_name);
 			}).then(function (user) {
-				res.render('index.twig', {
-					user: user.toJSON()
+				return user.syncMessages();
+
+			}).then(function (user) {
+				var userData = user.toJSON();
+
+				res.render('user.twig', {
+					user: userData
 				});
 			});
 		}

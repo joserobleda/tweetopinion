@@ -1,6 +1,9 @@
 
 	var app 		= require('neasy');
-	var controller 	= require('../controllers/user.js');
+	var user 		= require('../controllers/user.js');
+	var message 	= require('../controllers/message.js');
 	
-	app.get('/', controller.index);
-	app.get('/:screen_name', controller.show);
+	app.get('/', user.index);
+	app.get('/:screen_name', user.show);
+
+	app.post('/:screen_name/message', message.store);

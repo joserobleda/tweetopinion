@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+
+        <title>TweetOpinion!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" href="/assets/dev/css/reset.css" />
+        <link rel="stylesheet" href="/assets/dev/css/ncss.css" />
+        <link rel="stylesheet" href="/assets/dev/css/app.css" />
+        <meta name="description" content="To brave people. Give your honest opinion about a twitter user from the safety of being anonymous" />
+    </head>
+    <body>
+        <header></header>
+
+        <main 
+            style="background-image: url({{ user.profile_background_image_url_https }}); background-color: #{{ user.profile_background_color }}" class="{% if user.profile_background_image_url_https == 'https://abs.twimg.com/images/themes/theme1/bg.png' %}twitter{% endif %}">
+            <div class="row layout small">
+                <div id="dashboard" class="col">
+                    <div class="image">
+                        <img src="{{ user.profile_image_url }}" width="48px" height="48px" />
+                    </div>
+
+                    <h2>{{ user.name }}</h2>
+                    <h3>@{{ user.screen_name }}</h3>
+                
+                </div>
+
+                <div id="content" class="col">
+                    <form method="post" action="/{{ user.screen_name }}/message">
+                        <textarea name="message" placeholder="Write here your anonymous message" required></textarea>
+                        <button type="submit">Enviar</button>
+                    </form>
+
+                    <div id="messages">
+                        <ul>
+                            {% include 'messages.twig' with { messages: user.messages } %}
+                        </ul>
+                    </div>
+
+                </div>
+
+                
+            </div>
+        </main>
+
+        <script data-main="/assets/dev/js/app.js" src="/assets/dev/js/vendor/require.js"></script>
+    </body>
+</html>
