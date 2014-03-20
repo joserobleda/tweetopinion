@@ -45,8 +45,13 @@
 
 		// @override
 		toJSON: function (options) {
-			var json 		= Model.prototype.toJSON.call(this, options);
-			json.messages 	= this.get('messages').toJSON();
+			var json, messages;
+		
+			json = Model.prototype.toJSON.call(this, options);
+
+			if (messages = this.get('messages')) {
+				json.messages = messages.toJSON();
+			}
 				
 			return json;
 		},
