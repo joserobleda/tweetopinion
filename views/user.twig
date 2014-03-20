@@ -35,12 +35,19 @@
                         <button type="submit">Enviar</button>
                     </form>
 
-                    <div id="messages">
-                        <ul>
-                            {% include 'messages.twig' with { messages: user.messages } %}
-                        </ul>
-                    </div>
-
+                    {% if user.messages|length %}
+                        <div id="messages">
+                            <ul>
+                                {% include 'messages.twig' with { messages: user.messages } %}
+                            </ul>
+                        </div>
+                    {% else %}
+                        <div id="empty">
+                            No one has give a anonymous opinion of this user yet. 
+                            <br />
+                            Be the first and say something nice!
+                        </div>
+                    {% endif %}
                 </div>
 
                 

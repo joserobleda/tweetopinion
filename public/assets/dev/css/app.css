@@ -82,11 +82,16 @@ h2 {
 	}
 }
 
-#messages {
+
+#messages, #empty {
 	margin-top: 10px;
 	background: #fff;
 	border-radius: 3px;
 	border: 1px solid #51A7E8;
+}
+
+#empty {
+	padding: 10px;
 }
 
 #messages li {
