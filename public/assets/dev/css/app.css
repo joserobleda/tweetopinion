@@ -12,11 +12,14 @@ header {
 }
 
 main {
-	background-repeat: no-repeat;
+	background-repeat: repeat;
 	padding: 10px 0 0 0;
 	height: 100%;
 }
 
+main.twitter {
+	background-repeat: no-repeat;
+}
 
 #dashboard {
 	width: 190px;
@@ -29,11 +32,17 @@ main {
 
 #dashboard .image {
 	display: inline-block;
-	border: 3px solid #fff;
+	border: 2px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 5px;
+}
+
+h2 {
+	font-weight: bold;
 }
 
 #dashboard .image, #dashboard .image img {
-	border-radius: 3px;
+	vertical-align: top;
 }
 
 #form {

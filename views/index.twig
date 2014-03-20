@@ -16,15 +16,16 @@
     <body>
         <header></header>
 
-        <main style="background-image: url({{ user.profile_background_image_url_https }}); background-color: #{{ user.profile_background_color }}">
+        <main 
+            style="background-image: url({{ user.profile_background_image_url_https }}); background-color: #{{ user.profile_background_color }}" class="{% if user.profile_background_image_url_https == 'https://abs.twimg.com/images/themes/theme1/bg.png' %}twitter{% endif %}">
             <div class="row layout small">
                 <div id="dashboard" class="col">
                     <div class="image">
                         <img src="{{ user.profile_image_url }}" />
                     </div>
 
-                    <h2>{{ user.name }}</2>
-                    <h2>{{ user.screen_name }}</2>
+                    <h2>{{ user.name }}</h2>
+                    <h3>@{{ user.screen_name }}</h3>
                 
                 </div>
 
