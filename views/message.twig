@@ -1,4 +1,11 @@
 <div class="message">
+	{% if message.reply is defined and message.reply %}
+		<blockquote class="twitter-tweet" lang="es">
+            Loading tweet....
+            <a href="{{ message.reply }}"></a>
+        </blockquote>
+	{% endif %}
+
 	<div class="text">
 		{{ message.text }}
 	</div>

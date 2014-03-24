@@ -67,7 +67,27 @@ h2 {
 
 #content {
 	width: 500px;
+
+	iframe {
+		margin-top: 0px !important;
+		margin-right: 0px !important;
+		max-width: 100% !important;
+	}
+
+	blockquote {
+		border: 1px solid;
+		border-color: rgb(238, 238, 238) rgb(221, 221, 221) rgb(187, 187, 187);
+		background-color: #fff;
+		padding: 20px 10px;
+		margin-bottom: 10px;
+		text-align: center;
+		font-size: 12px;
+		border-radius: 5px;
+		color: #444;
+		box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 3px;
+	}
 }
+
 
 #content textarea {
 	width: 100%;

@@ -1,5 +1,6 @@
 
 	var Message = require('../models/message');
+	var User 	= require('../models/user');
 
 
 	module.exports = {
@@ -11,9 +12,23 @@
 				date: new Date()
 			};
 
+			if (req.body.reply) {
+				data.reply = req.body.reply;
+			}
+
 			var message = new Message(data);
 
 			message.save().then(function () {
+
+				User.findOne({ screen_name: data.screen_name }).then(function (user) {
+					if (user.get('notificated') != true) {
+						user.set('notificated', true);
+						user.save();
+
+						user.notificate();
+					}
+				});
+
 				res.redirect('/' + data.screen_name);
 			});
 		}

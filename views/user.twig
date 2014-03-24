@@ -10,6 +10,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" href="/assets/dev/css/app.css" />
         <meta name="description" content="To brave people. Give your honest opinion about a twitter user from the safety of being anonymous" />
+
+        <script src="/assets/dev/js/vendor/jquery-1.9.1.min.js"></script>
     </head>
     <body>
         <header></header>
@@ -28,9 +30,20 @@
                 </div>
 
                 <div id="content" class="col">
+                    {% if reply %}
+                        <blockquote class="twitter-tweet" lang="es">
+                            Loading tweet....
+                            <a href="{{ reply }}"></a>
+                        </blockquote>
+                    {% endif %}
+
+
                     <form method="post" action="/{{ user.screen_name }}/message">
                         <textarea name="message" placeholder="Write here your anonymous message" required></textarea>
                         <button type="submit">Enviar</button>
+                        {% if reply %}
+                            <input type="hidden" name="reply" value="{{ reply }}" />
+                        {% endif %}
                         <span class="disclaimer">Don't worry, we don't store anything about you!</span>
                     </form>
 
@@ -53,6 +66,7 @@
             </div>
         </main>
 
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         <script data-main="/assets/dev/js/app.js" src="/assets/dev/js/vendor/require.js"></script>
     </body>
 </html>

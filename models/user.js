@@ -8,10 +8,10 @@
 	var Twit = require('twit');
 
 	var T = new Twit({
-		consumer_key: 'nNhR0zSqlPU3r0m93AMcg', 
-		consumer_secret: 'IsVKN8TSyPwdNctNAF5q9QInARf2utkhbWZ7ss8E5o', 
-		access_token: '151658151-rOWMKHn2z5P1KU8d8J5U7ZN2n9E04X54Psvb8j6s', 
-		access_token_secret: 'dRiKAV9oAyzNpJkTTf3k35KuqlksY8CWyPT8ASyDrXm0x'
+		consumer_key: 'l9iwqBYwfDeEhFtxF02rg', 
+		consumer_secret: 'IeuhfDxJlp5xDBoLoU5aWH4qbeEC9DIgmXguE44wyo', 
+		access_token: '2409462433-1XSzLk5TLKXhzle6TKx8M8NGNCHwgJG1PNLMGlb', 
+		access_token_secret: 'blNMV2CEJ2Rw0nGd8aD1XhxGpi74CaRZIhGo8eB4omyJJ'
 	});
 
 
@@ -52,8 +52,16 @@
 			if (messages = this.get('messages')) {
 				json.messages = messages.toJSON();
 			}
-				
+		
 			return json;
+		},
+
+		notificate: function () {
+			var screen_name = this.get('screen_name');
+			var message = "Hi @" + screen_name + ", you have a new anonymous message. http://tweetopinion.com/" + screen_name;
+			T.post('statuses/update', { status: message }, function(err, reply) {
+			  //  ...
+			});
 		},
 
 		syncMessages: function () {

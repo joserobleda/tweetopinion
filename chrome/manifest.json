@@ -1,0 +1,21 @@
+{
+  "name": "TweetOpinion",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Integrate tweetopinion in the twitter page",
+  
+  "web_accessible_resources": [
+    "icon_48.png"
+  ],
+
+  
+
+  "permissions": [
+    "tabs"
+  ],
+
+  "content_scripts": [{
+      "matches": ["https://twitter.com/*"],
+      "js": ["tweetopinion.js"]
+  }]
+}
