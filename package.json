@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/Babelbite/tweetopinion",
   "dependencies": {
-    "neasy": "git://github.com/Babelbite/neasy.js.git#master",
+    "neasy": ">=0.0.13",
     "twit": "~1.1.12"
   }
 }
