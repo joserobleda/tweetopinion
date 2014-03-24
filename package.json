@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Babelbite/tweetopinion",
   "dependencies": {
     "neasy": ">=0.0.13",
-    "twit": "~1.1.12"
+    "twit": "~1.1.12",
+    "oauth": "~0.9.11"
   }
 }
