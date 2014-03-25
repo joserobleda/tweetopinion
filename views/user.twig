@@ -14,7 +14,7 @@
         <script src="/assets/dev/js/vendor/jquery-1.9.1.min.js"></script>
     </head>
     <body>
-        <header></header>
+         {% include 'header.twig' %}
 
         <main 
             style="background-image: url({{ user.profile_background_image_url_https }}); background-color: #{{ user.profile_background_color }}" class="{% if user.profile_background_image_url_https == 'https://abs.twimg.com/images/themes/theme1/bg.png' %}twitter{% endif %}">
@@ -38,13 +38,14 @@
                     {% endif %}
 
 
-                    <form method="post" action="/{{ user.screen_name }}/message">
-                        <textarea name="message" placeholder="Write here your anonymous message" required></textarea>
+                    <form method="post" action="/{{ user.screen_name }}/message" class="comment">
+                        <textarea name="message"  placeholder="Write here your anonymous message" required></textarea>
                         <button type="submit">Enviar</button>
                         {% if reply %}
                             <input type="hidden" name="reply" value="{{ reply }}" />
                         {% endif %}
                         <span class="disclaimer">Don't worry, we don't store anything about you!</span>
+                        <span class="counter">140</span>
                     </form>
 
                     {% if user.messages|length %}

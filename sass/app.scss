@@ -10,8 +10,17 @@ html, body {
 header {
 	background-image: url(../img/cream_dust.png);
 	background-color: #ccc;
-	height: 20px;
+	height: 65px;
+	padding-top: 10px;
 	border-bottom: 1px solid #51A7E8;
+}
+
+.counter {
+	float: right;
+
+	&.red {
+		color: #d40d12;
+	}
 }
 
 textarea, input {
