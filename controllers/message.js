@@ -6,6 +6,10 @@
 	module.exports = {
 
 		store: function (req, res, next) {
+			if (req.body.message.length > 140) {
+				res.status(403).send('Limit exceeded');
+			}
+
 			var data = {
 				text: req.body.message,
 				screen_name: req.params.screen_name,
