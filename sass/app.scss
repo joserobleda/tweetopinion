@@ -41,12 +41,12 @@ main {
 	height: 100%;
 }
 
-main.twitter {
+body.twitter {
 	background-repeat: no-repeat;
 }
 
-body.twitter-color {
-	background-color: #C0DEED;
+body.customized {
+	background-attachment: fixed;
 }
 
 #goto {
