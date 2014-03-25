@@ -13,7 +13,7 @@
 
         <script src="/assets/dev/js/vendor/jquery-1.9.1.min.js"></script>
     </head>
-    <body>
+    <body class="{% if user.profile_background_image_url_https == 'https://abs.twimg.com/images/themes/theme1/bg.png' %}twitter-color{% endif %}">
          {% include 'header.twig' %}
 
         <main 

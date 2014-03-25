@@ -45,6 +45,10 @@ main.twitter {
 	background-repeat: no-repeat;
 }
 
+body.twitter-color {
+	background-color: #C0DEED;
+}
+
 #goto {
 	width: 70%;
 }
@@ -151,4 +155,8 @@ h2 {
 	background-color: #EEE;
 	padding: 3px;
 	border-radius: 3px;
+}
+
+.chrome {
+	font-size: 12px
 }
