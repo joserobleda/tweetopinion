@@ -20,7 +20,9 @@
             <form class="row layout small center" action="/" >
                
                 <input type="text" name="screen_name" placeholder="Write a username and press enter" id="goto" />
-                {% if error is defined %} {{ error }} {% endif %}
+                {% if error is defined %}
+                    <div id="not-found" class="row layout small center">{{ error }}</div>
+                {% endif %}
             </form>
         </main>
 

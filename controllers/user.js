@@ -79,7 +79,7 @@
 				}
 
 				// store a new user
-				return User.store(data.screen_name).catch(function (error) {
+				return User.store(data.screen_name).fail(function (error) {
 					res.render('index.twig', {error: 'User not found'});
 				});
 			}).then(function (user) {
