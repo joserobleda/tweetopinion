@@ -21,16 +21,26 @@
   		replyLinK.insertBefore(anonymousReply);
 	};
 
+
+	function checkTweets (context) {
+		context = context || document;
+		var tweets = Array.prototype.slice.call(context.querySelectorAll(".tweet"));
+
+		tweets.forEach(handleTweet);
+	};
+
+
+
 	document.addEventListener('DOMSubtreeModified', function (e) {
 		var className = e.target.getAttribute('class');
 
-		
-
-		if (className && className.indexOf('original-tweet') !== -1) {
-
+		if (className && className.toString().indexOf('original-tweet') !== -1) {
 			handleTweet(e.target);
+		} else {
+			checkTweets(e.target);
 		}
 	}, false);
 
+	checkTweets();
 	
 }());
