@@ -1,26 +1,36 @@
 (function(){
 
-	function onLoad () {
-		var tweets = Array.prototype.slice.call(document.querySelectorAll(".tweet"));
+	function handleTweet (tweet) {
+		var tweetId = tweet.getAttribute('data-tweet-id');
+		var userName = tweet.getAttribute('data-screen-name');
 
+		var tweetURL = "https://twitter.com/"+userName+"/status/" + tweetId;
+		var url = "http://tweetopinion.com/" +userName+ "?reply=" + encodeURIComponent(tweetURL);
 
-		tweets.forEach(function (tweet) {
-			//console.log(tweet);
-			var tweetId = tweet.getAttribute('data-tweet-id');
-			var userName = tweet.getAttribute('data-screen-name');
+		var replyLinK = tweet.querySelector('li.action-reply-container');
 
-			var tweetURL = "https://twitter.com/"+userName+"/status/" + tweetId;
-			var url = "http://tweetopinion.com/" +userName+ "?reply=" + encodeURIComponent(tweetURL);
+		var anonym = tweet.querySelector('.anonym');
 
-			var replyLinK = tweet.querySelector('li.action-reply-container');
+		if (anonym) {
+			return;
+		}
 
-			var anonymousReply = document.createElement('li');
-			anonymousReply.innerHTML = '<a role="button" href="'+url+'" target="_blank" class="with-icn"><span class="Icon Icon--reply"></span><b>AnonyReply</b></a>';
+		var anonymousReply = document.createElement('li');
+		anonymousReply.innerHTML = '<a role="button" href="'+url+'" target="_blank" class="with-icn anonym"><span class="Icon Icon--reply"></span><b>AnonyReply</b></a>';
 
-      		replyLinK.insertBefore(anonymousReply);
-		});
+  		replyLinK.insertBefore(anonymousReply);
 	};
 
-	onLoad();
+	document.addEventListener('DOMSubtreeModified', function (e) {
+		var className = e.target.getAttribute('class');
 
+		
+
+		if (className && className.indexOf('original-tweet') !== -1) {
+
+			handleTweet(e.target);
+		}
+	}, false);
+
+	
 }());
