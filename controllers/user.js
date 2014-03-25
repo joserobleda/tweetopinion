@@ -79,7 +79,9 @@
 				}
 
 				// store a new user
-				return User.store(data.screen_name);
+				return User.store(data.screen_name).catch(function (error) {
+					res.render('index.twig', {error: 'User not found'});
+				});
 			}).then(function (user) {
 				return user.syncMessages();
 
